@@ -1,9 +1,9 @@
-package Model;
+package com.example.entity;
+
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -18,16 +18,18 @@ import lombok.NoArgsConstructor;
 @Data
 
 @Entity
-@Table(name = "CommentVideo")
-public class CommentVideo {
+@Table(name = "Rate")
+public class Rate implements Serializable{
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	String videoName;
+	Integer stars;
+	String comment;
+	
+	@ManyToOne
+	@JoinColumn(name = "userName")
+	Account userName;
 	
 	@ManyToOne
 	@JoinColumn(name ="product_id")
-	List<Product> product;
-	
-
+	private Product product;
 }

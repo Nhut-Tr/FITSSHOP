@@ -1,5 +1,6 @@
-package Model;
+package com.example.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -17,17 +18,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+
 @Entity
-@Table(name = "ProductColor")
-public class ProductColor {
+@Table(name = "OrderDetail")
+public class OrderDetail implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	String name;
-	
+	Integer quantity;
 	
 	@ManyToOne
 	@JoinColumn(name ="product_id")
-	List<Product> product;
-	
+	private Product product;
 }

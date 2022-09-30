@@ -1,4 +1,5 @@
-package Model;
+package com.example.entity;
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,14 +21,14 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "ProductVideo")
-public class ProductVideo {
+public class ProductVideo implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
 	String videoName;
 	
 	@ManyToOne
-	@JoinColumn(name = "product_id")
-	List<Product> product;
+	@JoinColumn(name ="product_id")
+	private Product product;
 	
 }

@@ -1,7 +1,9 @@
-package Model;
+package com.example.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,23 +16,19 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+
 @Entity
-@Table(name = "Authorities")
-public class Authorities {
+@Table(name = "ProductImage")
+public class ProductImage implements Serializable{
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
+	String imageData;
+	
 	@ManyToOne
-	@JoinColumn(name = "Roleid")
-	Role role;
-	@ManyToOne
-	@JoinColumn(name = "userName")
-	Account userName;
-	
-	
-	
+	@JoinColumn(name ="product_id")
+	private Product product;
 }

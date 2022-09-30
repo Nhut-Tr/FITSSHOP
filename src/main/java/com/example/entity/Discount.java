@@ -1,8 +1,8 @@
-package Model;
+package com.example.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,14 +20,20 @@ import lombok.NoArgsConstructor;
 @Data
 
 @Entity
-@Table(name = "ProductImage")
-public class ProductImage {
+@Table(name = "Discount")
+public class Discount implements Serializable{
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
-	String imageData;
+	Integer number;
 	
 	@ManyToOne
-	@JoinColumn(name = "product_id")
-	List<Product> product;
+	@JoinColumn(name= "product_id")
+	private Product product;
+	
+	@ManyToOne
+	@JoinColumn(name = "userName")
+	Account userName;
+	
 }

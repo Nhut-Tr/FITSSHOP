@@ -1,5 +1,6 @@
-package Model;
+package com.example.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Category")
-public class Category {
+public class Category implements Serializable{
 
 	@Id
 	Integer id;

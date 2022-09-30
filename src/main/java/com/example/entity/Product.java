@@ -1,5 +1,6 @@
-package Model;
+package com.example.entity;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -12,6 +13,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -22,7 +25,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Table(name = "Product")
-public class Product {
+public class Product implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	Integer id;
@@ -37,8 +40,9 @@ public class Product {
 	boolean active;
 	
 	@ManyToOne
-	@JoinColumn(name = "categoryId")
+	@JoinColumn(name="categoryId")
 	Category category;
+	
 	@OneToMany(mappedBy= "product_id")
 	List<ProductColor> productColor;
 	
@@ -51,6 +55,7 @@ public class Product {
 	@OneToMany(mappedBy= "product_id")
 	List<ProductVideo> productVideo ;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy= "product_id")
 	List<CommentImage> commentImage ;
 	
