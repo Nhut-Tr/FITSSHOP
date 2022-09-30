@@ -41,26 +41,31 @@ public class Product implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name="categoryId")
-	Category category;
-	
-	@OneToMany(mappedBy= "product_id")
-	List<ProductColor> productColor;
-	
-	@OneToMany(mappedBy= "product_id")
-	List<ProductImage> productImage;
-	
-	@OneToMany(mappedBy= "product_id")
-	List<ProductSize> productSize;
-	
-	@OneToMany(mappedBy= "product_id")
-	List<ProductVideo> productVideo ;
+	Category categoryId;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy= "product_id")
-	List<CommentImage> commentImage ;
+	@OneToMany(mappedBy= "productColor")
+	List<ProductColor> productColors;
 	
-	@OneToMany(mappedBy= "product_id")
-	List<CommentVideo> commentVideo;
+	@JsonIgnore
+	@OneToMany(mappedBy= "productImage")
+	List<ProductImage> productImages;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy= "productSize")
+	List<ProductSize> productSizes;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy= "productVideo")
+	List<ProductVideo> productVideos;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy= "commentImage")
+	List<CommentImage> commentImages ;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy= "commentVideo")
+	List<CommentVideo> commentVideos;
 	
 	
 	
