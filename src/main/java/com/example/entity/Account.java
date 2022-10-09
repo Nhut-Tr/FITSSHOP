@@ -32,7 +32,7 @@ public class Account implements Serializable{
 	boolean logged;
 
 	@OneToMany(mappedBy = "userName")
-	List<Orders> orders;
+	List<Order> orders;
 	
 	@OneToMany(mappedBy = "userName")
 	List<Authorities> authorities;

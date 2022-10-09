@@ -48,24 +48,17 @@ public class Product implements Serializable{
 	List<ProductColor> productColors;
 	
 	@JsonIgnore
-	@OneToMany(mappedBy= "productImage")
-	List<ProductImage> productImages;
-	
-	@JsonIgnore
 	@OneToMany(mappedBy= "productSize")
 	List<ProductSize> productSizes;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy= "productImage")
+	List<ProductImage> productImages;
 	
 	@JsonIgnore
 	@OneToMany(mappedBy= "productVideo")
 	List<ProductVideo> productVideos;
 	
-	@JsonIgnore
-	@OneToMany(mappedBy= "commentImage")
-	List<CommentImage> commentImages ;
-	
-	@JsonIgnore
-	@OneToMany(mappedBy= "commentVideo")
-	List<CommentVideo> commentVideos;
 	
 	
 	

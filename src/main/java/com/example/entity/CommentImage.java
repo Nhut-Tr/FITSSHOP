@@ -30,5 +30,5 @@ public class CommentImage implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name= "product_id")
-	Product commentImage;	
+	Rate rate;	
 }

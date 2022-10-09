@@ -28,7 +28,5 @@ public class CommentVideo implements Serializable{
 	
 	@ManyToOne
 	@JoinColumn(name ="product_id")
-	CommentVideo commentVideo;
-	
-
+	private Rate rate; 
 }
