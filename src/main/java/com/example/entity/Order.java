@@ -11,11 +11,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.springframework.format.annotation.DateTimeFormat;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,7 +34,7 @@ public class Order implements Serializable{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer id;
+	int id;
 	String address;
 	@DateTimeFormat(pattern = "MM/dd/yyyy")
 	@Temporal(TemporalType.DATE)
@@ -42,5 +45,8 @@ public class Order implements Serializable{
 	@JoinColumn(name= "userName")
 	Account userName;
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "order")
+	List<OrderDetail> orderDetail;
 	
 }
